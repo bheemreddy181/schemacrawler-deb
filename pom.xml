@@ -1,911 +1,911 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>io.github.adriens</groupId>
-    <artifactId>schemacrawler-deb</artifactId>
-    <version>15.04.01</version>
-    <packaging>jar</packaging>
-    
-    <name>Schemacrawler Debian Packager</name>
-    <description>Debian package builder for Schemacrawler.</description>
-    <organization>
-        <name>Schemacrawler</name>
-        <url>http://sualeh.github.io/SchemaCrawler/</url>
-    </organization>
-    <licenses>
-        <license>
-            <url>http://opensource.org/licenses/lgpl-3.0.html</url>
-            <name>The GNU Lesser General Public License, version 3.0 (LGPL-3.0)</name>
-        </license>
-    </licenses>
-    
-    <developers>
-        <developer>
-            <email>Adrien.Sales@gmail.com</email>
-            <id>adriens</id>
-            <name>Adrien Sales</name>
-            <organization>github</organization>
-            <organizationUrl>http://github.com/</organizationUrl>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+11</timezone>
-            <url>https://github.com/adriens</url>
-        </developer>
-    </developers>
-    
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <jdeb.version>1.7</jdeb.version>
-        
-        <derby.version>10.14.2.0</derby.version>
-        
-        <h2.version>1.4.197</h2.version>
-        <hsqldb.version>2.4.1</hsqldb.version>
-        <mssql.version>7.0.0.jre8</mssql.version>
-        <mariadb.version>2.4.0</mariadb.version>
-        <mysql.version>8.0.15</mysql.version>
-        <postgresql.version>42.2.5</postgresql.version>
-        <sqlite.version>3.25.2</sqlite.version>
-        
-        <jt400.version>9.7</jt400.version>
-        
-        <!-- Addition lints -->
-        <schemacrawler-additional-lints.version>1.05.00</schemacrawler-additional-lints.version>
-        
-        <!-- Additional command for native csv ouput-->
-        <schemacrawler-plugin-dashboard.version>1.3</schemacrawler-plugin-dashboard.version>
-        
-        <!-- Maven reporting plugin versions -->
-        <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
-        <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
-        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
-    </properties>
-    
-    <repositories>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.github.adriens</groupId>
+	<artifactId>schemacrawler-deb</artifactId>
+	<version>15.04.01</version>
+	<packaging>jar</packaging>
+
+	<name>Schemacrawler Debian Packager</name>
+	<description>Debian package builder for Schemacrawler.</description>
+	<organization>
+		<name>Schemacrawler</name>
+		<url>http://sualeh.github.io/SchemaCrawler/</url>
+	</organization>
+	<licenses>
+		<license>
+			<url>http://opensource.org/licenses/lgpl-3.0.html</url>
+			<name>The GNU Lesser General Public License, version 3.0 (LGPL-3.0)</name>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<email>Adrien.Sales@gmail.com</email>
+			<id>adriens</id>
+			<name>Adrien Sales</name>
+			<organization>github</organization>
+			<organizationUrl>http://github.com/</organizationUrl>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+11</timezone>
+			<url>https://github.com/adriens</url>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<jdeb.version>1.7</jdeb.version>
+
+		<derby.version>10.14.2.0</derby.version>
+
+		<h2.version>1.4.197</h2.version>
+		<hsqldb.version>2.4.1</hsqldb.version>
+		<mssql.version>7.0.0.jre8</mssql.version>
+		<mariadb.version>2.4.0</mariadb.version>
+		<mysql.version>8.0.15</mysql.version>
+		<postgresql.version>42.2.5</postgresql.version>
+		<sqlite.version>3.25.2</sqlite.version>
+
+		<jt400.version>9.7</jt400.version>
+
+		<!-- Addition lints -->
+		<schemacrawler-additional-lints.version>1.05.01</schemacrawler-additional-lints.version>
+
+		<!-- Additional command for native csv ouput -->
+		<schemacrawler-plugin-dashboard.version>1.3</schemacrawler-plugin-dashboard.version>
+
+		<!-- Maven reporting plugin versions -->
+		<maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
+		<maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
+		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+	</properties>
+
+	<repositories>
 		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-    
-    <dependencies>
-        <!-- Schemacrawler dependencies -->
-        <dependency>
-            <groupId>us.fatehi</groupId>
-            <artifactId>schemacrawler</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
-        <!-- Database Drivers-->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>${mariadb.version}</version>
-        </dependency>
+	<dependencies>
+		<!-- Schemacrawler dependencies -->
+		<dependency>
+			<groupId>us.fatehi</groupId>
+			<artifactId>schemacrawler</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>${mssql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derbyclient</artifactId>
-            <version>${derby.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>${hsqldb.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>${sqlite.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
+		<!-- Database Drivers -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>${mariadb.version}</version>
+		</dependency>
 
-        
-        <!-- DB2/400 driver-->
-        <dependency>
-            <groupId>net.sf.jt400</groupId>
-            <artifactId>jt400</artifactId>
-            <version>${jt400.version}</version>
-        </dependency>
-        
-        <!-- Additional lints dependency -->
-        <dependency>
-	    <groupId>com.github.mbarre</groupId>
-	    <artifactId>schemacrawler-additional-lints</artifactId>
-	    <version>${schemacrawler-additional-lints.version}</version>
-	</dependency>
-        
-        
-        <!-- Additional csv command plugin export,
-        see https://github.com/adriens/schemacrawler-csv-plugin -->
-        <dependency>
-	    <groupId>com.github.adriens</groupId>
-	    <artifactId>schemacrawler-plugin-dashboard</artifactId>
-	    <version>${schemacrawler-plugin-dashboard.version}</version>
-	</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>${mssql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>${derby.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>${sqlite.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+		</dependency>
 
-    </dependencies>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler</artifactId>
-                                    <version>${project.version}</version>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-lint</artifactId>
-                                    <version>${project.version}</version>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- Postgres section -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>org.postgresql</groupId>
-                                    <artifactId>postgresql</artifactId>
-                                    <version>${postgresql.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                <!-- Get schemacrawler-postgresql  -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-postgresql</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- MariaDB version -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>org.mariadb.jdbc</groupId>
-                                    <artifactId>mariadb-java-client</artifactId>
-                                    <version>${mariadb.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- MySQL Section -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>mysql</groupId>
-                                    <artifactId>mysql-connector-java</artifactId>
-                                    <version>${mysql.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                <!-- Get schemacrawler-mysql  -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-mysql</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- SQLServer Section -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>com.microsoft.sqlserver</groupId>
-                                    <artifactId>mssql-jdbc</artifactId>
-                                    <version>${mssql.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                <!-- Get schemacrawler-sqlserver  -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-sqlserver</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- Apache Derby Section -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>org.apache.derby</groupId>
-                                    <artifactId>derbyclient</artifactId>
-                                    <version>${derby.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- HSQLDB Section -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>org.hsqldb</groupId>
-                                    <artifactId>hsqldb</artifactId>
-                                    <version>${hsqldb.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                <!-- Get schemacrawler-derby  -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-hsqldb</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- SQLite Section -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>org.xerial</groupId>
-                                    <artifactId>sqlite-jdbc</artifactId>
-                                    <version>${sqlite.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                <!-- Get schemacrawler-sqlite  -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-sqlite</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- H2 section -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>com.h2database</groupId>
-                                    <artifactId>h2</artifactId>
-                                    <version>${h2.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- Offline -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-offline</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                                                
-                                <!-- DB2 -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-db2</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- Oracle -->
-                                <artifactItem>
-                                    <groupId>us.fatehi</groupId>
-                                    <artifactId>schemacrawler-oracle</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- DB2/400 -->
-                                <!-- Get the driver-->
-                                <artifactItem>
-                                    <groupId>net.sf.jt400</groupId>
-                                    <artifactId>jt400</artifactId>
-                                    <version>${jt400.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- Get Additional lint -->
-                                <artifactItem>
-                                    <groupId>com.github.mbarre</groupId>
-                                    <artifactId>schemacrawler-additional-lints</artifactId>
-                                    <version>${schemacrawler-additional-lints.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                
-                                <!-- Get additional csv command -->
-                                <artifactItem>
-                                    <groupId>com.github.adriens</groupId>
-                                    <artifactId>schemacrawler-plugin-dashboard</artifactId>
-                                    <version>${schemacrawler-plugin-dashboard.version}</version>
-                                    <type>jar</type>
-                                    <overWrite>false</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                                </artifactItem>
-                                        
-                            </artifactItems>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>jdeb</artifactId>
-                <groupId>org.vafer</groupId>
-                <version>${jdeb.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jdeb</goal>
-                        </goals>
-                        <configuration>
-                            <dataSet>
-                                <!-- Core schemacrawler libraries -->
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-${project.version}.jar</src>
-                                    <dst>schemacrawler-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-lint-${project.version}.jar</src>
-                                    <dst>schemacrawler-lint-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- config properties -->
-                                <data>
-                                    <src>src/main/resources/schemacrawler.colormap.properties</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/config</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/schemacrawler.config.properties</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/config</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                
-                                
-                                <!-- Jdbc drivers resoruces -->
-                                <!-- Postgres resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/postgresql-${postgresql.version}.jar</src>
-                                    <dst>postgresql-${postgresql.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-postgresql-${project.version}.jar</src>
-                                    <dst>schemacrawler-postgresql-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- MariaDB resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/mariadb-java-client-${mariadb.version}.jar</src>
-                                    <dst>mariadb-java-client-${mariadb.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <!-- Mysql resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/mysql-connector-java-${mysql.version}.jar</src>
-                                    <dst>mysql-connector-java-${mysql.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-mysql-${project.version}.jar</src>
-                                    <dst>schemacrawler-mysql-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- SQLServer resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/mssql-jdbc-${mssql.version}.jar</src>
-                                    <dst>mssql-jdbc-${mssql.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-sqlserver-${project.version}.jar</src>
-                                    <dst>schemacrawler-sqlserver-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <!-- Apache Derby resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/derbyclient-${derby.version}.jar</src>
-                                    <dst>derbyclient-${derby.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- HyperSQL resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/hsqldb-${hsqldb.version}.jar</src>
-                                    <dst>hsqldb-${hsqldb.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-hsqldb-${project.version}.jar</src>
-                                    <dst>schemacrawler-hsqldb-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- SQLite resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/sqlite-jdbc-${sqlite.version}.jar</src>
-                                    <dst>sqlite-jdbc-${sqlite.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-sqlite-${project.version}.jar</src>
-                                    <dst>schemacrawler-sqlite-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- h2 resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/h2-${h2.version}.jar</src>
-                                    <dst>h2-${h2.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
 
-                                <!-- Offline Resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-offline-${project.version}.jar</src>
-                                    <dst>schemacrawler-offline-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <!-- DB2 Resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-db2-${project.version}.jar</src>
-                                    <dst>schemacrawler-db2-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                <!-- DB2/400 Driver -->
-                                <data>
-                                    <src>${project.build.directory}/lib/jt400-${jt400.version}.jar</src>
-                                    <dst>jt400-${jt400.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                
-                                <!-- Oracle Resources -->
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-oracle-${project.version}.jar</src>
-                                    <dst>schemacrawler-oracle-${project.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                
-                                
-                                <!-- Some common resources -->
-                                <data>
-                                    <src>src/main/resources/HOW-TO.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/LICENSE.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/README.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- Database Proprietary Drivers -->
-                                <data>
-                                    <src>src/main/resources/HOW-TO-SYBASEIQ.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/HOW-TO-ORACLE.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/HOW-TO-DB2.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                
+		<!-- DB2/400 driver -->
+		<dependency>
+			<groupId>net.sf.jt400</groupId>
+			<artifactId>jt400</artifactId>
+			<version>${jt400.version}</version>
+		</dependency>
 
-                                <!-- Command lines -->
-                                <data>
-                                    <src>src/main/resources/schemacrawler.sh</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- Additional lints -->
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-additional-lints-${schemacrawler-additional-lints.version}.jar</src>
-                                    <dst>schemacrawler-additional-lints-${schemacrawler-additional-lints.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/additional-lints/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/ADDITIONAL-LINTS.README.md</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/additional-lints/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/ADDITIONAL-LINTS.LICENSE.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/additional-lints/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/ADDITIONAL-LINTS.HOWTO.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/additional-lints/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- Additional commands -->
-                                <!-- Additional commands -->
-                                <data>
-                                    <src>${project.build.directory}/lib/schemacrawler-plugin-dashboard-${schemacrawler-plugin-dashboard.version}.jar</src>
-                                    <dst>schemacrawler-plugin-dashboard-${schemacrawler-plugin-dashboard.version}.jar</dst>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/additional-commands/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/ADDITIONAL-COMMANDS.README.md</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/additional-commands/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                <!-- open source drivers licence manifests -->
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-derby.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-h2.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-hsqldb.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-mariadb.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-mysql.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-postgresql.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-sqlite.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-sqlserver.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/DRIVER.LICENSE-jt400.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                
-                                
-                                <!-- Symbolic links -->
-                                <data>
-                                    <type>link</type>
-                                    <linkName>/opt/schemacrawler</linkName>
-                                    <linkTarget>/opt/schemacrawler-${project.version}</linkTarget>  
-                                    <symlink>true</symlink>
-                                </data>
-                                <data>
-                                    <type>link</type>
-                                    <linkName>/usr/bin/schemacrawler</linkName>
-                                    <linkTarget>/opt/schemacrawler-${project.version}/schemacrawler.sh</linkTarget>  
-                                    <symlink>true</symlink>
-                                </data>
-                                
-                                <!-- Schemacrawler shell installer -->
-                                <data>
-                                    <src>src/main/resources/HOW-TO.txt</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/install-schemacrawler-shell.sh</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <filemode>555</filemode>
-                                        <prefix>/opt/schemacrawler-${project.version}/</prefix>
-                                    </mapper>
-                                </data>
-                            </dataSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
-        </plugins>
-    </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>14.21.02</version>
-            </plugin>
-      
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <version>14.21.02</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>changes-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-        </plugins>
-    </reporting>
+		<!-- Additional lints dependency -->
+		<dependency>
+			<groupId>com.github.bheemreddy181</groupId>
+			<artifactId>schemacrawler-additional-lints</artifactId>
+			<version>${schemacrawler-additional-lints.version}</version>
+		</dependency>
+
+
+		<!-- Additional csv command plugin export, see https://github.com/adriens/schemacrawler-csv-plugin -->
+		<dependency>
+			<groupId>com.github.adriens</groupId>
+			<artifactId>schemacrawler-plugin-dashboard</artifactId>
+			<version>${schemacrawler-plugin-dashboard.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler</artifactId>
+									<version>${project.version}</version>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/lib</outputDirectory>
+								</artifactItem>
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-lint</artifactId>
+									<version>${project.version}</version>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/lib</outputDirectory>
+								</artifactItem>
+								<!-- Postgres section -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>org.postgresql</groupId>
+									<artifactId>postgresql</artifactId>
+									<version>${postgresql.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+								<!-- Get schemacrawler-postgresql -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-postgresql</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- MariaDB version -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>org.mariadb.jdbc</groupId>
+									<artifactId>mariadb-java-client</artifactId>
+									<version>${mariadb.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- MySQL Section -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>mysql</groupId>
+									<artifactId>mysql-connector-java</artifactId>
+									<version>${mysql.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+								<!-- Get schemacrawler-mysql -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-mysql</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- SQLServer Section -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>com.microsoft.sqlserver</groupId>
+									<artifactId>mssql-jdbc</artifactId>
+									<version>${mssql.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+								<!-- Get schemacrawler-sqlserver -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-sqlserver</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- Apache Derby Section -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>org.apache.derby</groupId>
+									<artifactId>derbyclient</artifactId>
+									<version>${derby.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- HSQLDB Section -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>org.hsqldb</groupId>
+									<artifactId>hsqldb</artifactId>
+									<version>${hsqldb.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+								<!-- Get schemacrawler-derby -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-hsqldb</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- SQLite Section -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>org.xerial</groupId>
+									<artifactId>sqlite-jdbc</artifactId>
+									<version>${sqlite.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+								<!-- Get schemacrawler-sqlite -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-sqlite</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- H2 section -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>com.h2database</groupId>
+									<artifactId>h2</artifactId>
+									<version>${h2.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- Offline -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-offline</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- DB2 -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-db2</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- Oracle -->
+								<artifactItem>
+									<groupId>us.fatehi</groupId>
+									<artifactId>schemacrawler-oracle</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- DB2/400 -->
+								<!-- Get the driver -->
+								<artifactItem>
+									<groupId>net.sf.jt400</groupId>
+									<artifactId>jt400</artifactId>
+									<version>${jt400.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- Get Additional lint -->
+								<artifactItem>
+									<groupId>com.github.bheemreddy181</groupId>
+									<artifactId>schemacrawler-additional-lints</artifactId>
+									<version>${schemacrawler-additional-lints.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+								<!-- Get additional csv command -->
+								<artifactItem>
+									<groupId>com.github.adriens</groupId>
+									<artifactId>schemacrawler-plugin-dashboard</artifactId>
+									<version>${schemacrawler-plugin-dashboard.version}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/lib/</outputDirectory>
+								</artifactItem>
+
+							</artifactItems>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>jdeb</artifactId>
+				<groupId>org.vafer</groupId>
+				<version>${jdeb.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jdeb</goal>
+						</goals>
+						<configuration>
+							<dataSet>
+								<!-- Core schemacrawler libraries -->
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-${project.version}.jar</src>
+									<dst>schemacrawler-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-lint-${project.version}.jar</src>
+									<dst>schemacrawler-lint-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+								<!-- config properties -->
+								<data>
+									<src>src/main/resources/schemacrawler.colormap.properties</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/config</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/schemacrawler.config.properties</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/config</prefix>
+									</mapper>
+								</data>
+
+
+
+								<!-- Jdbc drivers resoruces -->
+								<!-- Postgres resources -->
+								<data>
+									<src>${project.build.directory}/lib/postgresql-${postgresql.version}.jar</src>
+									<dst>postgresql-${postgresql.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-postgresql-${project.version}.jar</src>
+									<dst>schemacrawler-postgresql-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+								<!-- MariaDB resources -->
+								<data>
+									<src>${project.build.directory}/lib/mariadb-java-client-${mariadb.version}.jar</src>
+									<dst>mariadb-java-client-${mariadb.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<!-- Mysql resources -->
+								<data>
+									<src>${project.build.directory}/lib/mysql-connector-java-${mysql.version}.jar</src>
+									<dst>mysql-connector-java-${mysql.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-mysql-${project.version}.jar</src>
+									<dst>schemacrawler-mysql-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+								<!-- SQLServer resources -->
+								<data>
+									<src>${project.build.directory}/lib/mssql-jdbc-${mssql.version}.jar</src>
+									<dst>mssql-jdbc-${mssql.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-sqlserver-${project.version}.jar</src>
+									<dst>schemacrawler-sqlserver-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<!-- Apache Derby resources -->
+								<data>
+									<src>${project.build.directory}/lib/derbyclient-${derby.version}.jar</src>
+									<dst>derbyclient-${derby.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+								<!-- HyperSQL resources -->
+								<data>
+									<src>${project.build.directory}/lib/hsqldb-${hsqldb.version}.jar</src>
+									<dst>hsqldb-${hsqldb.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-hsqldb-${project.version}.jar</src>
+									<dst>schemacrawler-hsqldb-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+								<!-- SQLite resources -->
+								<data>
+									<src>${project.build.directory}/lib/sqlite-jdbc-${sqlite.version}.jar</src>
+									<dst>sqlite-jdbc-${sqlite.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-sqlite-${project.version}.jar</src>
+									<dst>schemacrawler-sqlite-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+								<!-- h2 resources -->
+								<data>
+									<src>${project.build.directory}/lib/h2-${h2.version}.jar</src>
+									<dst>h2-${h2.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+								<!-- Offline Resources -->
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-offline-${project.version}.jar</src>
+									<dst>schemacrawler-offline-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<!-- DB2 Resources -->
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-db2-${project.version}.jar</src>
+									<dst>schemacrawler-db2-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<!-- DB2/400 Driver -->
+								<data>
+									<src>${project.build.directory}/lib/jt400-${jt400.version}.jar</src>
+									<dst>jt400-${jt400.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+
+								<!-- Oracle Resources -->
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-oracle-${project.version}.jar</src>
+									<dst>schemacrawler-oracle-${project.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+
+
+
+								<!-- Some common resources -->
+								<data>
+									<src>src/main/resources/HOW-TO.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/LICENSE.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/README.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+
+								<!-- Database Proprietary Drivers -->
+								<data>
+									<src>src/main/resources/HOW-TO-SYBASEIQ.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/HOW-TO-ORACLE.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/HOW-TO-DB2.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+
+
+								<!-- Command lines -->
+								<data>
+									<src>src/main/resources/schemacrawler.sh</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+
+								<!-- Additional lints -->
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-additional-lints-${schemacrawler-additional-lints.version}.jar</src>
+									<dst>schemacrawler-additional-lints-${schemacrawler-additional-lints.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/lib/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/ADDITIONAL-LINTS.README.md</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/additional-lints/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/ADDITIONAL-LINTS.LICENSE.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/additional-lints/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/ADDITIONAL-LINTS.HOWTO.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/additional-lints/</prefix>
+									</mapper>
+								</data>
+
+								<!-- Additional commands -->
+								<!-- Additional commands -->
+								<data>
+									<src>${project.build.directory}/lib/schemacrawler-plugin-dashboard-${schemacrawler-plugin-dashboard.version}.jar</src>
+									<dst>schemacrawler-plugin-dashboard-${schemacrawler-plugin-dashboard.version}.jar</dst>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/additional-commands/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/ADDITIONAL-COMMANDS.README.md</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/additional-commands/</prefix>
+									</mapper>
+								</data>
+
+								<!-- open source drivers licence manifests -->
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-derby.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-h2.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-hsqldb.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-mariadb.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-mysql.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-postgresql.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-sqlite.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-sqlserver.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/DRIVER.LICENSE-jt400.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+
+
+								<!-- Symbolic links -->
+								<data>
+									<type>link</type>
+									<linkName>/opt/schemacrawler</linkName>
+									<linkTarget>/opt/schemacrawler-${project.version}</linkTarget>
+									<symlink>true</symlink>
+								</data>
+								<data>
+									<type>link</type>
+									<linkName>/usr/bin/schemacrawler</linkName>
+									<linkTarget>/opt/schemacrawler-${project.version}/schemacrawler.sh</linkTarget>
+									<symlink>true</symlink>
+								</data>
+
+								<!-- Schemacrawler shell installer -->
+								<data>
+									<src>src/main/resources/HOW-TO.txt</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+								<data>
+									<src>src/main/resources/install-schemacrawler-shell.sh</src>
+									<type>file</type>
+									<mapper>
+										<type>perm</type>
+										<filemode>555</filemode>
+										<prefix>/opt/schemacrawler-${project.version}/</prefix>
+									</mapper>
+								</data>
+							</dataSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>14.21.02</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>14.21.02</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
